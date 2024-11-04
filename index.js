@@ -1,5 +1,3 @@
-const generate = require('@babel/generator').default;
-
 module.exports = function ({ types: t }) {
     return {
         visitor: {
@@ -149,10 +147,6 @@ function injectUseEffect(path, t, variableNames) {
 
         // useEffect 삽입
         bodyPath.node.body.splice(insertIndex, 0, useEffectHook);
-
-        // 변환된 코드 출력
-        const transformedCode = generate(path.node).code;
-        console.log("변환된 코드:\n", transformedCode);
     }
 }
 
