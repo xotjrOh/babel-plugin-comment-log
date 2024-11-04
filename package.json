@@ -1,0 +1,25 @@
+{
+  "name": "babel-plugin-comment-log",
+  "version": "1.0.0",
+  "description": "Babel plugin that automatically inserts logs based on comment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xotjrOh/babel-plugin-comment-log.git"
+  },
+  "keywords": [
+    "babel-plugin"
+  ],
+  "author": "taeseok-oh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xotjrOh/babel-plugin-comment-log/issues"
+  },
+  "homepage": "https://github.com/xotjrOh/babel-plugin-comment-log#readme",
+  "devDependencies": {
+    "@babel/core": "^7.26.0"
+  }
+}
