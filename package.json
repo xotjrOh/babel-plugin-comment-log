@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-comment-log",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Babel plugin that automatically inserts logs based on comment",
   "main": "index.js",
   "scripts": {
