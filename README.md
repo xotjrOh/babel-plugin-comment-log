@@ -45,7 +45,7 @@ If you're not using Next.js, you can configure Babel using `.babelrc`. Here's ho
   "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": ["babel-plugin-comment-log"],
   "ignore": ["node_modules"]
-};
+}
 ```
 2. Ensure Babel is properly configured in your project. If you already have a `babel.config.js` or `.babelrc` file, make sure to include the `babel-plugin-comment-log` in the plugins array.
 
