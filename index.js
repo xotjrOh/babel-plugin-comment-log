@@ -18,6 +18,7 @@ module.exports = function ({ types: t }) {
     };
 };
 
+const generate = require('@babel/generator').default;
 
 // 유틸리티 함수들
 
@@ -119,8 +120,6 @@ function extractVariableNames(commentValue) {
 }
 
 function injectUseEffect(path, t, variableNames) {
-    // if (process.env.NODE_ENV === 'production') return;
-
     // useEffect import 추가
     addUseEffectImport(path, t);
 
@@ -130,9 +129,35 @@ function injectUseEffect(path, t, variableNames) {
     // 함수 본문에 useEffect 추가
     var bodyPath = path.get('body');
     if (bodyPath.isBlockStatement()) {
-        bodyPath.node.body.push(useEffectHook);
+        var bodyStatements = bodyPath.get('body');
+        var insertIndex = 0; // 기본적으로는 첫 번째에 추가
+
+        // 훅 및 변수 선언 이후 위치 찾기
+        for (var i = 0; i < bodyStatements.length; i++) {
+            var stmt = bodyStatements[i];
+
+            // 변수 선언 또는 훅 호출이면 index 증가
+            if (
+                stmt.isVariableDeclaration() ||
+                (stmt.isExpressionStatement() &&
+                    stmt.get('expression').isCallExpression() &&
+                    t.isIdentifier(stmt.get('expression.callee').node, { name: /^use/ }))
+            ) {
+                insertIndex = i + 1;
+            } else {
+                break;
+            }
+        }
+
+        // useEffect 삽입
+        bodyPath.node.body.splice(insertIndex, 0, useEffectHook);
+
+        // 변환 후 AST를 JavaScript 코드로 변환하여 출력
+        const transformedCode = generate(path.node).code;
+        console.log("변환된 코드:\n", transformedCode);
     }
 }
+
 
 function addUseEffectImport(path, t) {
     var program = path.find(function (p) {
