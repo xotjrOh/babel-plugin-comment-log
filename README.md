@@ -7,7 +7,7 @@ A Babel plugin that injects logging code based on comments in React components.
 **In**
 
 ```javascript
-// log(member, horses, score)
+// @log(member, horses, score)
 ```
 
 **Out**
