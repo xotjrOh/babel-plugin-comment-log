@@ -24,7 +24,7 @@ npm install --save-dev babel-plugin-comment-log
 
 ## Usage
 ### For Next.js Projects
-Next.js uses `.babelrc` for Babel configuration. To integrate babel-plugin-comment-log into your Next.js project, update your .babelrc file as follows:
+Next.js uses `.babelrc` for Babel configuration. To integrate `babel-plugin-comment-log` into your Next.js project, update your `.babelrc` file as follows:
 
 ```json
 {
@@ -36,17 +36,18 @@ Next.js uses `.babelrc` for Babel configuration. To integrate babel-plugin-comme
 > Note: The next/babel preset includes necessary configurations for Next.js, ensuring compatibility with both ES6+ syntax and React JSX. If your project already uses this preset, no additional configuration is needed.
 
 ### For General React Projects
-If you're not using Next.js, you can configure Babel using `babel.config.js`. Here's how to set it up:
+If you're not using Next.js, you can configure Babel using `.babelrc`. Here's how to set it up:
 
-1. Create or update `babel.config.js` in the root of your project:
+1. Create or update `.babelrc` in the root of your project:
 
-```javascript
-module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-react'],
-  plugins: ['babel-plugin-comment-log'],
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["babel-plugin-comment-log"],
+  "ignore": ["node_modules"]
 };
 ```
-2. Ensure Babel is properly configured in your project. If you already have a babel.config.js or .babelrc file, make sure to include the babel-plugin-comment-log in the plugins array.
+2. Ensure Babel is properly configured in your project. If you already have a `babel.config.js` or `.babelrc` file, make sure to include the `babel-plugin-comment-log` in the plugins array.
 
 > Note: The `@babel/preset-env` and `@babel/preset-react` presets are used to transpile modern JavaScript and React JSX syntax. If your project already uses these presets, you only need to add babel-plugin-comment-log to the plugins array.
 
